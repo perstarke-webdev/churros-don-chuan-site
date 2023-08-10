@@ -201,3 +201,41 @@ hr.rezension-sep {
 td {
   border-bottom: 1px solid #6B8E23 !important;
 }
+
+
+
+
+.container_wagen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Adjust spacing between boxes */
+}
+
+.wagen-box {
+  flex-basis: calc(50% - 10px); /* Each box takes half of the available space minus spacing */
+  background-color: #D3D3D3;
+  border: 2px solid #6B8E23;
+  padding: 20px;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.wagen-box img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+@media (max-width: 700px) {
+  .wagen-box {
+    flex-basis: 100%; /* Each box takes full width on smaller screens */
+  }
+}
+
+.wagen {
+    transition: transform 0.3s;
+}
+
+.wagen:hover {
+    transform: scale(1.05);
+}
