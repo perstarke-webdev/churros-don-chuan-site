@@ -1,0 +1,98 @@
+<header class="intro">
+  {% if page.image %}
+    {% assign intro_image = page.image.path | default: page.image | relative_url | escape %}
+
+
+  <div class="intro-image">
+    <div id="slideshow-container">
+      <img src="/images/headers/header.webp" alt="Churros Don Juan">
+      <img src="/images/headers/header4.webp" alt="Churros Don Juan">
+      <img src="/images/headers/header3.webp" alt="Churros Don Juan">
+      <img src="/images/headers/header2.webp" alt="Churros Don Juan">
+
+      <!-- Add more images here as needed -->
+    </div>
+  </div>
+
+  <style>
+  /* Slideshow container styles */
+  #slideshow-container {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  /* Hide all images except the first one */
+  #slideshow-container img:not(:first-child) {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 1s ease-in-out; /* Add CSS transition for smooth fade effect */
+  }
+
+  /* Show the first image initially */
+  #slideshow-container img:first-child {
+    opacity: 1;
+    transition: opacity 1s ease-in-out; /* Add CSS transition for smooth fade-in effect */
+  }
+</style>
+
+  <script>
+  // JavaScript to handle the slideshow functionality
+  document.addEventListener("DOMContentLoaded", function () {
+    let currentSlide = 0;
+    const slides = document.querySelectorAll("#slideshow-container img");
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.style.opacity = i === index ? "1" : "0";
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    // Set the time interval (in milliseconds) to change slides automatically
+    const intervalTime = 3000; // 3 seconds
+    setInterval(nextSlide, intervalTime);
+  });
+</script>
+
+
+  {% endif %}
+
+  <div class="inner">
+    <div class="intro-text">
+      <h1 id="page-title" class="intro-title">{{ page.alt_title | default: page.title | default: site.title | markdownify | strip_html }}</h1>
+      {% if page.sub_title %}
+        <p class="intro-subtitle">{{ page.sub_title | markdownify | strip_html }}</p>
+      {% endif %}
+
+      {% if page.date %}
+        {% include author %}
+        <p class="entry-meta">
+          {% if author_name %}<span class="byline-item">{{ author_name | prepend: 'by ' }}</span>{% endif %}<span class="byline-item"><span class="icon">{% include icon-calendar.svg %}</span><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time></span>{% if page.read_time %} <span class="byline-item"><span class="icon">{% include icon-stopwatch.svg %}</span>{% capture read_time %}{% include read-time.html %}{% endcapture %}{{ read_time | strip }}</span>{% endif %}
+        </p>
+      {% endif %}
+
+      {% if page.introduction %}
+        <div class="intro-more">
+          {{ page.introduction | markdownify }}
+        </div>
+      {% endif %}
+
+      {% if page.actions %}
+        <ul class="intro-actions">
+          {% for action in page.actions %}
+            <li><a href="{{ action.url }}" class="btn">{% if action.icon %}<span class="icon">{% include {{ action.icon | prepend: 'icon-' | append: '.svg' }} %}</span>{% endif %}{{ action.label }}</a></li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  </div>
+</header>
