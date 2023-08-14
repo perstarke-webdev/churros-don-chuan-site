@@ -225,6 +225,11 @@ td {
   height: auto;
 }
 
+img.max{
+    width: 100%;
+    max-width: 20vw;
+}
+
 
 @media (max-width: 700px) {
   .wagen-box {
@@ -280,3 +285,31 @@ td {
 .video-item:hover .video-caption {
   opacity: 1;
 }
+
+
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Vertically center items */
+}
+
+.image-container {
+    width: 30%;
+    display: flex;
+    align-items: center; /* Vertically center image */
+}
+
+img.flex {
+    max-width: 100%;
+    height: auto;
+}
+
+
+.flex-box {
+    flex: 1; /* Allow the box to take remaining available width */
+    padding: 20px;
+    margin-left: 10px; /* Add some spacing between image and box */
+    box-sizing: border-box;
+}
+
