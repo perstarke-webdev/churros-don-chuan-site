@@ -227,7 +227,7 @@ td {
 
 img.max{
     width: 100%;
-    max-width: 20vw;
+    max-width: 40vw;
 }
 
 
@@ -318,5 +318,9 @@ img.flex {
     padding: 20px;
     background-color: #61A3A2;
     border: 5px solid black;
+}
+
+.center {
+    text-align: center;
 }
 
