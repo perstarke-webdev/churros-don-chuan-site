@@ -1,0 +1,40 @@
+---
+layout: home
+title: "Videos"
+image: "/images/headers/header.webp"
+permalink: "/videos/"
+---
+
+<div class="videos-container">
+    <video controls preload="auto" class="videos-item" id="video1">
+        <source src="/images/videos/video1.mp4" type="video/mp4">
+    </video>
+
+    <video controls preload="auto" class="videos-item" id="video2">
+        <source src="/images/videos/video2.mp4" type="video/mp4">
+    </video>
+</div>
+
+<script>
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const videos = document.querySelectorAll('.videos-item');
+
+    videos.forEach(video => {
+        video.addEventListener('play', function() {
+            // Pause other videos
+            videos.forEach(otherVideo => {
+                if (otherVideo !== video && !otherVideo.paused) {
+                    otherVideo.pause();
+                }
+            });
+        });
+    });
+});
+
+
+
+</script>
+
+

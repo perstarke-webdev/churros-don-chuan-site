@@ -225,9 +225,15 @@ td {
   height: auto;
 }
 
-img.max{
+img.max {
     width: 100%;
     max-width: 40vw;
+}
+
+@media (min-width: 1000px) {
+    img.max {
+        max-width: 400px;
+    }
 }
 
 
@@ -324,3 +330,22 @@ img.flex {
     text-align: center;
 }
 
+
+
+.videos-container {
+    display: flex;
+    gap: 20px; /* Add spacing between the videos */
+    align-items: flex-start; /* Align videos at the top of the container */
+    flex-wrap: wrap; /* Allow videos to wrap to the next line */
+}
+
+.videos-item {
+    max-width: 400px;
+}
+
+/* For small screens, make videos stack on top of each other */
+@media (max-width: 600px) {
+    .videos-container {
+        flex-direction: column;
+    }
+}
